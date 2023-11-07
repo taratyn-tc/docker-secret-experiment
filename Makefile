@@ -1,7 +1,7 @@
 .PHONY=docker-build
 docker-build:
 	docker build \
-		--secret id=mysecert,src=$(PWD)/secret.txt \
+		--secret id=mysecret,src=$(PWD)/secret.txt \
 		--progress=plain \
 		--no-cache \
 		--tag secret-mount-experiment \
