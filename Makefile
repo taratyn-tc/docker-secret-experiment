@@ -13,6 +13,19 @@ docker-run: docker-build
 	docker run -it --rm secret-mount-experiment cat /app/secret
 	
 .PHONY=show-secret
-show-secret: docker-run
+show-secret-docker: docker-run
+	echo "The expected secret:"
+	cat secret.txt
+
+.PHONY=docker-compose-build
+docker-compose-build:
+	docker compose --progress=plain build --no-cache
+
+.PHONY=docker-compose-run
+docker-compose-run: docker-compose-build
+	docker compose up
+
+.PHONY=show-secret-docker-compose
+show-secret-docker-compose: docker-compose-run
 	echo "The expected secret:"
 	cat secret.txt

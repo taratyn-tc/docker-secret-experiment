@@ -1,0 +1,11 @@
+secrets:
+    mysecret:
+        file: ./secret.txt
+services:
+    secret-shower:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            secrets:
+                - mysecret
+        command: cat /app/secret
